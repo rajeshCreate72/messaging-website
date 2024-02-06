@@ -7,8 +7,8 @@ class ChatsMain extends Component {
     render() {
         return (
             <div className="main-chats-container">
-                <Chats className="chats-heads"/>
-                <ChatResponse className="chats-response"/>
+                <Chats />
+                <ChatResponse />
             </div>
         )
     }
