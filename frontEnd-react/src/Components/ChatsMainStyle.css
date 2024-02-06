@@ -1,0 +1,13 @@
+.main-chats-container {
+    display: flex;
+}
+
+.chats-heads {
+    width: 30%;
+    background-color: lightcoral;
+}
+
+.chats-response {
+    flex: 1;
+    background-color: red;
+}
