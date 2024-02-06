@@ -9,3 +9,27 @@
     background-color: yellow;
     height: 5%;
 }
+
+.response-text-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70%;
+    height: 10%;
+    background-color: indigo;
+    
+}
+
+.response-text-input {
+    flex: 1;
+    top: 10;
+    bottom: 10;
+    height: 70%;
+    overflow: hidden;
+    position: relative;
+    background-color: green;
+}
