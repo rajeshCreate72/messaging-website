@@ -1,5 +1,9 @@
 .chat-head {
     width: 30%;
-    position: sticky;
     background-color: lightcoral;
+}
+
+.chat-top-bar {
+    height: 5%;
+    background-color: blue;
 }

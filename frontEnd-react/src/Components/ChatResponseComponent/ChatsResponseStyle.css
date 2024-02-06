@@ -3,3 +3,9 @@
     overflow: auto;
     background-color: cadetblue;
 }
+
+.chat-response-bar {
+    flex: 1;
+    background-color: yellow;
+    height: 5%;
+}
