@@ -21,15 +21,11 @@
     width: 70%;
     height: 10%;
     background-color: indigo;
-    
+    overflow: hidden;
 }
 
 .response-text-input {
-    flex: 1;
-    top: 10;
-    bottom: 10;
-    height: 70%;
-    overflow: hidden;
-    position: relative;
-    background-color: green;
+    width: 50%;
+    height: 30%;
+    resize: none;
 }
