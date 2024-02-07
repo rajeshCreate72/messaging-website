@@ -10,5 +10,5 @@ To run the application,
 4. Open ```localhost:3000``` in a browser to start the application.
 
 
-To edit the application
+To edit the application <br />
 ```./src/components``` edit ```.js``` files
