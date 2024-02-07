@@ -8,3 +8,7 @@ To run the application,
 2. Make sure react Version is (v21.6.1).
 3. From the folder directory run ```npm start```
 4. Open ```localhost:3000``` in a browser to start the application.
+
+
+To edit the application
+```./src/components``` edit ```.js``` files
