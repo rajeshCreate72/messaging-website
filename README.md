@@ -1,7 +1,7 @@
-/frontEnd folder contains React code
+./frontEnd folder contains React code
 
 
-React vesrion: v21.6.1 \ Dependencies: none
+React vesrion: v21.6.1<br />Dependencies: none
 
 To run the application,
 1. Clone the frontend folder to pc.
