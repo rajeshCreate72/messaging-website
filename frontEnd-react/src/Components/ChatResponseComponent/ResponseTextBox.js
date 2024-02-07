@@ -5,7 +5,7 @@ class ResponseTextBox  extends Component {
   render() {
     return (
       <div className="response-text-box">
-        <textarea className="response-text-input" type="text" ></textarea>
+        <textarea className="response-text-input" type="text"></textarea>
       </div>
     )
   }

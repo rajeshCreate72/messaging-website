@@ -4,6 +4,10 @@
 }
 
 .chat-top-bar {
-    height: 5%;
+    height: 50px;
     background-color: blue;
+}
+
+.self-profile-head {
+    height: 100%;
 }
