@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import './ChatsStyle.css';
 import ChatsTopBar from "./ChatsTopBar";
 

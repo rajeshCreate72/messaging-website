@@ -4,12 +4,13 @@
     background-color: cadetblue;
 }
 
-.chat-response-bar {
+.response-top-bar {
     flex: 1;
     background-color: yellow;
-    height: 5%;
+    height: 60px;
 }
 
+/* response text box at the bottom */
 .response-text-box {
     flex: 1;
     display: flex;
@@ -28,4 +29,22 @@
     width: 50%;
     height: 30%;
     resize: none;
+}
+
+/* responder image at the top */
+
+.responder-profile-head {
+    position: relative;
+    align-content: center;
+    left: 10px;
+    top: 10px;
+    bottom: 10px;
+    height: 30px;
+    width: 30px;
+    background-color: blue;
+}
+
+#responder-img {
+    width: 30px;
+    height: 30px;
 }

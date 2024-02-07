@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react'
 import "./ChatsStyle.css";
-import DefaultProfile from "./contents/default.png";
+import DefaultProfileImg from "../contents/default.png"
 
-class ProfileSelf extends Component {
-  render() {
-    return (
-      <div className="self-profile-head">
-        <image src={DefaultProfile} alt="ProfileImage" />
+function ProfileSelf() {
+  return (
+    <div className='self-profile-head'>
+        <image id="img-property" src={ DefaultProfileImg } alt="defaultImg" />
       </div>
-    )
-  }
+  )
 }
 
-export default ProfileSelf;
+export default ProfileSelf
