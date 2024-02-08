@@ -1,11 +1,12 @@
 .chat-response {
     flex: 1;
+    display: flex;
     overflow: auto;
-    background-color: cadetblue;
 }
 
 .response-top-bar {
     flex: 1;
+    justify-content: flex-start;
     background-color: yellow;
     height: 60px;
 }
@@ -14,7 +15,7 @@
 .response-text-box {
     flex: 1;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     position: absolute;
     bottom: 0;
@@ -47,4 +48,19 @@
 #responder-img {
     width: 30px;
     height: 30px;
+}
+
+.msg-container {
+    display: flex;
+}
+
+.my-msg-left {
+    flex: 1;
+    flex-direction: column;
+    background-color: red;
+}
+
+.my-res-right {
+    flex: 1;
+    align-items: end;
 }

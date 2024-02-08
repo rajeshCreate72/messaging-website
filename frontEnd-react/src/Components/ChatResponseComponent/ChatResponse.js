@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './ChatsResponseStyle.css';
 import ChatsResponseTopBar from "./ChatsResponseTopBar";
 import ResponseTextBox from "./ResponseTextBox";
+import MessagesComponent from "./MessagesComponent";
 
 class ChatResponse extends Component {
     render() {
@@ -9,6 +10,7 @@ class ChatResponse extends Component {
             <div className="chat-response">
                 <ChatsResponseTopBar />
                 <ResponseTextBox />
+                <MessagesComponent />
             </div>
         )
     }
