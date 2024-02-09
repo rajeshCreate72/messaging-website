@@ -26,7 +26,8 @@
     top: 10%;
     left: 10%;
     width: 70%;
-    height: 60%;
+    height: 50px;
+    resize: none;
 }
 
 #img-send-logo {
