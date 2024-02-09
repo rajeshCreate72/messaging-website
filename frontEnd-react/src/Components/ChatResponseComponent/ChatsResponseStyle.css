@@ -1,66 +1,38 @@
 .chat-response {
     flex: 1;
     display: flex;
-    overflow: auto;
+    flex-direction: column;
 }
 
 .response-top-bar {
-    flex: 1;
-    justify-content: flex-start;
-    background-color: yellow;
-    height: 60px;
-}
-
-/* response text box at the bottom */
-.response-text-box {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 70%;
     height: 10%;
-    background-color: indigo;
-    overflow: hidden;
-}
-
-.response-text-input {
-    width: 50%;
-    height: 30%;
-    resize: none;
-}
-
-/* responder image at the top */
-
-.responder-profile-head {
-    position: relative;
-    align-content: center;
-    left: 10px;
-    top: 10px;
-    bottom: 10px;
-    height: 30px;
-    width: 30px;
-    background-color: blue;
-}
-
-#responder-img {
-    width: 30px;
-    height: 30px;
+    background-color: darkmagenta;
 }
 
 .msg-container {
+    height: 90%;
+    background-color: lightgreen;
+}
+
+.text-box-container {
     display: flex;
+    height: 10%;
+    justify-content: space-between;
+    background-color: darkslateblue;
 }
 
-.my-msg-left {
-    flex: 1;
-    flex-direction: column;
-    background-color: red;
+#response-text-box {
+    position: relative;
+    top: 10%;
+    left: 10%;
+    width: 70%;
+    height: 60%;
 }
 
-.my-res-right {
-    flex: 1;
-    align-items: end;
+#img-send-logo {
+    position: relative;
+    bottom: 10%;
+    right: 40%;
+    width: 80%;
+    height: 50%;
 }
