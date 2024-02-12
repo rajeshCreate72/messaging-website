@@ -50,3 +50,8 @@
     cursor: pointer;
     background-color: burlywood;
 }
+
+/* contacts list style */
+.contacts-list {
+    background-color: aqua;
+}
