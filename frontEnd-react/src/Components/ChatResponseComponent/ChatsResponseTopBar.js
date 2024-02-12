@@ -1,10 +1,11 @@
 import React from 'react'
-import AddContact from './AddContact'
+import ChatsResponseProfile from './ChatsResponseProfile'
 
 function ChatsResponseTopBar() {
   return (
     <div className='response-top-bar'>
-      <AddContact/>
+      <ChatsResponseProfile />
+      <span><h2>Contact Name</h2></span>
     </div>
   )
 }
