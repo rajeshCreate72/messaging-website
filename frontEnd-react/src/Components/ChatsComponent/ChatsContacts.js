@@ -12,10 +12,10 @@ function ChatsContacts() {
   return (
     <div className='chats-contacts'>
       {contactsList.map((contacts, index) => (
-        <div className='contacts-list' key={ index } style={{display: 'inline-block'}}>
+        <div className='contacts-list' key={ index }>
           <form>
             <li style={{listStyle: 'none'}}>
-              <button>{contacts.userName}</button>
+              <button className='contacts-solo-style'>{contacts.userName}</button>
             </li>
           </form>
         </div>

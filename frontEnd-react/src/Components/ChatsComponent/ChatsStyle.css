@@ -52,6 +52,18 @@
 }
 
 /* contacts list style */
+.contacts-solo-style {
+    display: inline-block;
+    width: 100%;
+    height: 20%;
+    text-align: start;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: grey;
+}
+
 .contacts-list {
-    background-color: aqua;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
