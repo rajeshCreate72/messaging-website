@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import './ChatsResponseStyle.css';
 import ChatsResponseTopBar from "./ChatsResponseTopBar";
-import MessagesComponent from "./MessagesComponent";
-import MessageTextBox from "./MessageTextBox";
+import MessageHandling from "./MessageHandling";
 
 class ChatResponse extends Component {
     render() {
         return (
             <div className="chat-response">
                 <ChatsResponseTopBar />
-                <MessagesComponent />
-                <MessageTextBox />
+                <MessageHandling />
             </div>
         )
     }
