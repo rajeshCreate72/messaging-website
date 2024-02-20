@@ -5,7 +5,6 @@ function ChatsResponseTopBar() {
   return (
     <div className='response-top-bar'>
       <ChatsResponseProfile />
-      <span><h2>Contact Name</h2></span>
     </div>
   )
 }
