@@ -1,0 +1,22 @@
+.input-container {
+    margin: 10px 0px 10px 20px;
+}
+
+.input-container label {
+    display: inline-block;
+    width: 150px; /* Adjust as needed */
+}
+
+.input-container input {
+    display: inline-block;
+    background-color: lightgray;
+    width: 250px;
+    height: 40px;
+    border: none;
+}
+*:focus {
+    outline: none;
+}
+h1 {
+    font-size: 40px;
+}

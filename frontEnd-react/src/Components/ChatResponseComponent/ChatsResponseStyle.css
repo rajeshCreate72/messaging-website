@@ -1,7 +1,7 @@
 .chat-response {
     flex: 1;
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap-reverse;
 }
 
 .response-top-bar {
@@ -22,7 +22,6 @@
     height: 50px;
     display: flex;
     margin-right: 30px;
-    overflow: hidden;
     justify-content: center;
     border-radius: 100%;
     background-color: white;
