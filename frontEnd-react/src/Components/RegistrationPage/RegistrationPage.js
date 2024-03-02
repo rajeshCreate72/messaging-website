@@ -23,6 +23,10 @@ function RegistrationPage() {
           <label>Re-enter Your password: </label>
           <input type='password' id='password1' />
         </div>
+        <div className='input-button'>
+          <button id='register' type='submit'>Register</button>
+          <button id='login' type='button'>Log In</button>
+        </div>
       </form>
     </div>
   )
