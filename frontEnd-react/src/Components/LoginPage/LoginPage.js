@@ -10,15 +10,15 @@ function LoginPage() {
       <form>
         <div className='input-container'>
           <label>username: </label>
-          <input type='text' id='username' /><br/>
+          <input type='text' id='username' />
         </div>
         <div className='input-container'>
           <label>Password: </label>
-          <input type='password' id='password' /> <br/>
+          <input type='password' id='password' />
         </div>
         <div className='input-button'>
-          <button id='register' type='button'>Register</button>
           <button id='login' type='submit'>Log In</button>
+          
         </div>
       </form>
     </div>
