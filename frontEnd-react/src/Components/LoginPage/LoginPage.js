@@ -9,7 +9,7 @@ function LoginPage() {
       <br/>
       <form>
         <div className='input-container'>
-          <label>username: </label>
+          <label>Username: </label>
           <input type='text' id='username' />
         </div>
         <div className='input-container'>
