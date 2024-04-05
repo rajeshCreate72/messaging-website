@@ -1,0 +1,12 @@
+.info-lt {
+    height: 10vh;
+    border-style: dashed;
+}
+
+.cont-list {
+    list-style: none;
+    height: 90vh;
+    border-style: dashed;
+}
+
+

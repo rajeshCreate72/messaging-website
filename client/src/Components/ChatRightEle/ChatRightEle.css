@@ -1,0 +1,42 @@
+.width-border-rt {
+    border-style: dashed;
+}
+
+.info-rt {
+    height: 10vh;
+}
+
+.msgs {
+    height: 80vh;
+}
+
+.rly {
+    height: 10vh;
+}
+
+.rly-box {
+    width: 60vw;
+    height: 90%;
+    resize: none;
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.rly-txt {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.msg-submit {
+    margin-top: 15px;
+    height: 50px;
+    width: 50px;
+}
+
+.send-btn {
+    display: flex;
+    justify-content: center;
+}
+
