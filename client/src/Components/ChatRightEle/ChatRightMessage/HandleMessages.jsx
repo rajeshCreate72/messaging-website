@@ -4,12 +4,12 @@ function HandleMessages(props) {
 
   return (
     <div>
-        {props.msg.map((m, index) => {
+        {props.msg.map((m, index) => (
           <div className='msg-got' key={index}>
             {m.user === "1123" ? (
               <div className='row'>
-                <div className='col'></div>
-                <div className='col'>
+                <div className='col-9'></div>
+                <div className='col-3'>
                   <h1>{m.msg}</h1>
                   <h2>{m.time}</h2>
                 </div>
@@ -23,7 +23,7 @@ function HandleMessages(props) {
               </div>
             )}
           </div>
-        })}
+        ))}
     </div>
   )
 }
