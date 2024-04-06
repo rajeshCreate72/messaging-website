@@ -9,17 +9,18 @@ function HandleMessages(props) {
             {m.user === "1123" ? (
               <div className='row'>
                 <div className='col-9'></div>
-                <div className='col-3'>
-                  <h1>{m.msg}</h1>
-                  <h2>{m.time}</h2>
+                <div className='col my-msg'>
+                  <p>{m.msg}</p>
+                  <p>{m.time}</p>
                 </div>
               </div>
             ) : (
               <div className='row'>
-                <div className='col'>
-                  <h1>{m.msg}</h1>
-                  <h2>{m.time}</h2>
+                <div className='col-3 not-my-msg'>
+                  <p>{m.msg}</p>
+                  <p>{m.time}</p>
                 </div>
+                <div className='col'></div>
               </div>
             )}
           </div>

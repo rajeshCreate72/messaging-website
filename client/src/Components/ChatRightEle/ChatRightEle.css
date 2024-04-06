@@ -1,17 +1,16 @@
-.width-border-rt {
-    border-style: dashed;
-}
-
 .info-rt {
     height: 10vh;
 }
 
 .msgs {
-    height: 80vh;
+    height: 88vh;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
 }
 
 .rly {
-    height: 10vh;
+    margin-top: 20px;
 }
 
 .rly-box {
@@ -23,14 +22,7 @@
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-.rly-txt {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
 .msg-submit {
-    margin-top: 15px;
     height: 50px;
     width: 50px;
 }
@@ -40,3 +32,39 @@
     justify-content: center;
 }
 
+.my-msg {
+    height: 5%;
+    padding-top: 20px;
+    font-size: large;
+    border-radius: 20px;
+    background-color: rgba(200, 255, 255, 0.3);
+}
+
+.not-my-msg {
+    height: 5%;
+    padding-top: 20px;
+    font-size: large;
+    border-radius: 20px;
+    background-color: rgba(200, 220, 255, 0.2);
+}
+
+.msg-got {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 8px;
+}
+
+.text-area {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background:rgba(231, 230, 130, 0.3);
+    border-radius: 5px;
+}

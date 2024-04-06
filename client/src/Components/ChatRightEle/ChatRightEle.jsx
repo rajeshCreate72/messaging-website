@@ -16,11 +16,6 @@ function ChatRightEle() {
                 <ChatRightMessage />
             </div>
         </div>
-        <div className="row">
-            <div className="col">
-                <ChatRightReply />
-            </div>
-        </div>
     </div>
   )
 }

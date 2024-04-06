@@ -1,17 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../ChatRightEle.css'
 import HandleMessages from './HandleMessages'
+import ChatRightReply from '../ChatRightReply/ChatRightReply'
 
 function ChatRightMessage() {
-  const msgs = [
-    {user: "1123", msg: "Hi Hello", time: 12154},
-    {user: "1124", msg: "Hi", time: 45126},
-    {user: "1123", msg: "How Are you?", time: 12654},
-    {user: "1124", msg: "I am good", time: 65461},
-  ]
+  const [msgs, setMsgs] = useState([
+    {user: "1123", msg: "Hi Hello", time: Date.now()},
+    {user: "1124", msg: "Hi", time: Date.now()},
+    {user: "1123", msg: "How Are you?", time: Date.now()},
+    {user: "1124", msg: "I am good", time: Date.now()},
+  ])
+
+  const addMsg = (message) => {
+    const newMessage = {user: '1123', msg: message, time: Date.now()}
+
+    setMsgs([...msgs, newMessage])
+  }
+
   return (
-    <div className='msgs width-border-rt'>
+    <div className='msgs'>
+      <div className='text-area'>
         <HandleMessages msg={msgs}/>
+      </div>
+      <div className="row">
+          <div className="col">
+              <ChatRightReply addMessage={addMsg}/>
+          </div>
+      </div>
     </div>
   )
 }
