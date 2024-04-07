@@ -1,7 +1,6 @@
 import React from 'react'
 import ChatRightInfo from './ChatRightInfo/ChatRightInfo'
 import ChatRightMessage from './ChatRightMessage/ChatRightMessage'
-import ChatRightReply from './ChatRightReply/ChatRightReply'
 
 function ChatRightEle() {
   return (

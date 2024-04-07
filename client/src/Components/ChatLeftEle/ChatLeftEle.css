@@ -1,12 +1,15 @@
 .info-lt {
     height: 10vh;
-    border-style: dashed;
+    background-color: rgba(124, 165, 192, 0.433);
 }
 
 .cont-list {
     list-style: none;
     height: 90vh;
-    border-style: dashed;
+    background-color: rgba(101, 135, 157, 0.241);
 }
 
-
+.s-cont {
+    padding-top: 20px;
+    border-bottom: 2px solid rgba(196, 207, 213, 0.366);
+}
