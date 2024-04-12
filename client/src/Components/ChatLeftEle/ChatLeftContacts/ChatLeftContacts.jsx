@@ -2,11 +2,11 @@ import React from 'react'
 import '../ChatLeftEle.css'
 import HandleContacts from './HandleContacts'
 
-function ChatLeftContacts() {
+function ChatLeftContacts(props) {
   return (
     <div className='cont-list'>
         <ul>
-            <HandleContacts />
+            <HandleContacts selectContact = { props.selectContact } />
         </ul>
     </div>
   )

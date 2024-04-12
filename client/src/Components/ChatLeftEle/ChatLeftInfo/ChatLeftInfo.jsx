@@ -3,7 +3,12 @@ import React from 'react'
 function ChatLeftInfo() {
   return (
     <div className='info-lt'>
-        <p>ChatLeftInfo</p>
+      <div className="my-img-div">
+
+      </div>
+        <button className='add-button'>
+          <h2>+</h2>
+        </button>
     </div>
   )
 }

@@ -13,10 +13,10 @@ function ChatsMain() {
     <div className='container-fluid font-style'>
         <div className='row'>
             <div className='col-3'>
-                <ChatLeftEle selectContact={getContact} />
+                <ChatLeftEle selectContact={openCoMsgs} />
             </div>
             <div className='col-9'>
-                <ChatRightEle renderContact={openCoMsgs} />
+                { getContact && <ChatRightEle renderContact={getContact} /> }
             </div>
         </div>
     </div>

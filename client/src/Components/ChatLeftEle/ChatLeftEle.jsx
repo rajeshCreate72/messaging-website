@@ -2,17 +2,17 @@ import React from 'react'
 import ChatLeftInfo from './ChatLeftInfo/ChatLeftInfo'
 import ChatLeftContacts from './ChatLeftContacts/ChatLeftContacts'
 
-function ChatLeftEle() {
+function ChatLeftEle(props) {
   return (
     <div>
         <div className='row'>
             <div className='col'>
-                <ChatLeftInfo></ChatLeftInfo>
+                <ChatLeftInfo />
             </div>
         </div>
         <div className='row'>
             <div className='col'>
-                <ChatLeftContacts></ChatLeftContacts>
+                <ChatLeftContacts selectContact = { props.selectContact }  />
             </div>
         </div>
     </div>
