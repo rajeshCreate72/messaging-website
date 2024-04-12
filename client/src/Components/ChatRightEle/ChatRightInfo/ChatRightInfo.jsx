@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function ChatRightInfo() {
+
   return (
     <div className='info-rt width-border-rt'>
-        <p>Messenger Profile Pic and Info</p>
+        <h3>Set contact Name here</h3>
     </div>
   )
 }
