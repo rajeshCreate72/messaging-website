@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-function ChatRightInfo() {
+function ChatRightInfo(props) {
 
   return (
     <div className='info-rt width-border-rt'>
-        <h3>Set contact Name here</h3>
+        <h3>{props.setContactName}</h3>
     </div>
   )
 }

@@ -9,6 +9,9 @@ function ChatsMain() {
     const openCoMsgs = (contact) => {
         setContact(contact)
     }
+
+    console.log(getContact)
+
  return (
     <div className='container-fluid font-style'>
         <div className='row'>
@@ -16,7 +19,8 @@ function ChatsMain() {
                 <ChatLeftEle selectContact={openCoMsgs} />
             </div>
             <div className='col-9'>
-                { getContact && <ChatRightEle renderContact={getContact} /> }
+                { getContact && <ChatRightEle 
+                renderContact={getContact}  /> }
             </div>
         </div>
     </div>

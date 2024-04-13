@@ -2,12 +2,12 @@ import React from 'react'
 import ChatRightInfo from './ChatRightInfo/ChatRightInfo'
 import ChatRightMessage from './ChatRightMessage/ChatRightMessage'
 
-function ChatRightEle() {
+function ChatRightEle(props) {
   return (
     <div>
         <div className="row">
             <div className="col">
-                <ChatRightInfo />
+                <ChatRightInfo setContactName={ props.renderContact } />
             </div>
         </div>
         <div className="row">

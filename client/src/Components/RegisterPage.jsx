@@ -18,8 +18,6 @@ function RegisterPage() {
                 <br />
                 <label style={{marginTop: '10px'}}>Password: </label>
                 <input type='password'></input>
-                <label style={{marginTop: '10px'}}>Re-enter Password: </label>
-                <input type='password'></input>
                 <div className='reg-button'>
                     <button type='submit'>Register</button>
                 </div>    

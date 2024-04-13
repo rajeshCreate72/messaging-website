@@ -11,7 +11,7 @@ function HandlingContacts(props) {
   return (
     <div>
         {contacts.map((contact, index) => (
-            <div className='s-cont' key={index} onClick={ props.selectContact(contact) }>
+            <div className='s-cont' key={index} onClick={() => props.selectContact(contact) }>
                 <h4>{contact}</h4>
                 <p>{ contact }'s message...</p>
             </div>
