@@ -1,22 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 
 function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    async function submit(e) {
+        e.preventDefault()
+        try {
+            await axios.post("http://localhost:3000/login", {
+                email, password
+            })
+        }
+        catch(err) {
+            console.log(err)
+        }
+    }
+
   return (
     <div className='reg-page'>
-        <form action="" className="reg-form">
+        <form action="POST" className="reg-form">
             <h3>Registration</h3>
             <br />
             <br />
             <div className='reg-form-ele'>
-                <label>MailId/UserId: </label>
-                <input type='mail'></input>
+                <label>MailId: </label>
+                <input type='mail' onChange={(e) => {setEmail(e.target.value)}}></input>
                 <br />
                 <label style={{marginTop: '10px'}}>Password: </label>
-                <input type='password'></input>
+                <input type='password' onChange={(e) => {setPassword(e.target.value)}}></input>
                 <div className='reg-button'>
-                    <button type='submit'>Log In</button>
+                    <button type='submit' onClick={submit}>Log In</button>
                 </div>    
             </div>
         </form>
