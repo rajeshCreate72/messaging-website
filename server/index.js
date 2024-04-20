@@ -1,6 +1,7 @@
-const express = require('express')
-const collection = require('./database')
-const cors = require('cors')
+const express = req('express')
+const collection = req('./database')
+const cors = req('cors')
+const bcrypt = req('bcrypt')
 
 const app = express()
 
@@ -9,61 +10,64 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 
-app.listen(3000, () => {
+app.listen(3001, () => {
     console.log("Server is running")
 })
 
 
-
-app.get('/', cors(), (require, result) => {
-
-})
-
-app.post('/register', async(require, result) => {
-    const{email, password, userId} = require.body
-
-    const data = {
-        email: email,
-        password: password,
-        userId: userId,
-    }
+// Register Form
+app.post('/register', async(req, res) => {
+    const{email, userId, name, password} = req.body
 
     try{
         const checkEmail = await collection.findOne({email: email})
         const checkUserId = await collection.findOne({userId: userId})
 
         if(checkEmail || checkUserId) {
-            result.json("Email or userId already Existed")
+            res.status(400).json("Email or userId already Existed")
         }
         else {
-            result.json("Doesn't exist")
-            await collection.insertMany([data])
+            const hashPasswd = await bcrypt.hash(password, 10)
+            const data = {
+                email: email,
+                userId: userId,
+                name: name,
+                password: password,
+            }
+            await collection.insertOne(data)
+            res.status(200).json('Registration Successful')
         }
     }
     catch(error) {
-        result.json("Error Checking")
+        console.error(error)
+        res.status(500).json('Error registring User')
     }
 
 })
 
-
-app.post('/login', async(require, result) => {
-    const{email, password, userId} = require.body
+// Login Form
+app.post('/login', async(req, res) => {
+    const{email, password} = req.body
 
     try{
         const checkEmail = await collection.findOne({email: email})
-        const checkUserId = await collection.findOne({userId: userId})
-        const checkPassword = await collection.findOne({password: password})
+        
+        if (!checkEmail) {
+            return res.status(404).json('User not found');
+        }
 
-        if((checkEmail || checkUserId) && checkPassword) {
-            result.json("login approved")
+        const checkPasswd = await bcrypt.password(password, checkEmail.password)
+
+        if(checkPasswd) {
+            res.status(200).json('Logged in successfully');
         }
         else {
-            result.json("Doesn't exist")
+            res.status(401).json('Invalid password or email')
         }
     }
     catch(error) {
-        result.json("Error Checking")
+        console.error(error)
+        res.status(500).json('Error logging in')
     }
 
 })

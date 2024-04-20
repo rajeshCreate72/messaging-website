@@ -1,22 +1,26 @@
 import React, { useState } from 'react'
 import './ChatsMain.css'
-import { Link } from 'react-router-dom'
+import { Link, BrowserRouter as Router } from 'react-router-dom'
 import axios from 'axios'
 
 function RegisterPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [userId, setUserId] = useState('')
+    const [name, setName] = useState('')
 
     async function submit(event) {
-        event.preventDeafault()
+        event.preventDefault()
 
         try {
-            await axios.post('http://localhost:3000/register',{
-                email, password, userId
-            })
+            await axios.post('http://localhost:3001/register',{
+                email, userId, name, password
+            });
+            console.log('Registration succesful')
+            window.location.href = '/login'
         } catch (error) {
             console.log(error)
+            console.log('Error while registering:', error)
         }
     }
 
@@ -32,6 +36,8 @@ function RegisterPage() {
                 <br />
                 <label style={{marginTop: '10px'}}>userId: </label>
                 <input type='text'  onChange={(event) => {setUserId(event.target.value)}}></input>
+                <label style={{marginTop: '10px'}}>Name: </label>
+                <input type='text'  onChange={(event) => {setName(event.target.value)}}></input>
                 <br />
                 <label style={{marginTop: '10px'}}>Password: </label>
                 <input type='password'  onChange={(event) => {setPassword(event.target.value)}}></input>
