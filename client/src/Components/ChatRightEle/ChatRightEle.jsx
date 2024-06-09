@@ -7,7 +7,7 @@ function ChatRightEle(props) {
     <div>
         <div className="row">
             <div className="col">
-                <ChatRightInfo setContactName={ props.renderContact } />
+                <ChatRightInfo />
             </div>
         </div>
         <div className="row">

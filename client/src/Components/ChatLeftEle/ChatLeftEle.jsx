@@ -12,7 +12,7 @@ function ChatLeftEle(props) {
         </div>
         <div className='row'>
             <div className='col'>
-                <ChatLeftContacts selectContact = { props.selectContact }  />
+                <ChatLeftContacts />
             </div>
         </div>
     </div>

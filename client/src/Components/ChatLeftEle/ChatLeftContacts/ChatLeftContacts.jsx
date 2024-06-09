@@ -6,7 +6,7 @@ function ChatLeftContacts(props) {
   return (
     <div className='cont-list'>
         <ul>
-            <HandleContacts selectContact = { props.selectContact } />
+            <HandleContacts />
         </ul>
     </div>
   )

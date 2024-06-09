@@ -1,30 +1,29 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate()
 
     async function submit(e) {
         e.preventDefault()
         try {
-            await axios.post("http://localhost:3001/login", {
-                email, password
-            })
+            await axios.post("http://localhost:8000/api/login", {email, password})
 
-            window.location.href = '/'
+            navigate('/')
         }
         catch(err) {
-            console.log(err)
+            console.log('Error Logging in', err)
         }
     }
 
   return (
     <div className='reg-page'>
         <form action="POST" className="reg-form">
-            <h3>Registration</h3>
+            <h3>Login</h3>
             <br />
             <br />
             <div className='reg-form-ele'>
