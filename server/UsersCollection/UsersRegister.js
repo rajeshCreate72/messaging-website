@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const users = require('../collections/UsersSchema');
+const users = require('./UsersSchema');
 const bcrypt = require('bcrypt');
 
 // Register Form

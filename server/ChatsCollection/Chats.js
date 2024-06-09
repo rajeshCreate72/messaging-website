@@ -1,5 +1,5 @@
 const express = require('express')
-const chats = require('../collections/ChatsSchema')
+const chats = require('./ChatsSchema')
 const router = express.Router()
 
 router.post('/', (req, res) => {

@@ -4,10 +4,10 @@ const cors = require('cors')
 // Connection to database
 connectDatabase()
 // Routes
-const loginConnection = require('./routes/UsersLogin.js')
-const registerConnection = require('./routes/UsersRegister.js')
-const contactsConnection = require('./routes/Contacts.js')
-const chatsConnection = require('./routes/Chats.js')
+const loginConnection = require('./UsersCollection/UsersLogin.js')
+const registerConnection = require('./UsersCollection/UsersRegister.js')
+const contactsConnection = require('./ContactsCollection/Contacts.js')
+const chatsConnection = require('./ChatsCollection/Chats.js')
 
 const app = express()
 
