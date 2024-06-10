@@ -43,6 +43,7 @@
 }
 
 .drop-content {
+    display: block;
     position: absolute;
     z-index: 1;
     flex-direction: column;
@@ -67,6 +68,44 @@
 .add-btn {
     align-self: center;
     text-align: center;
+}
+
+.add-contact-search {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.search-contact {
+    display:flex;
+    background-color: rgba(43, 76, 80, 0.275);
+    height: 50vh;
+    width: 50vh;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.search-box-info {
+    margin-left: 2vw;
+    height: 4vh;
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.get-contacts {
+    background-color: rgba(43, 76, 80, 0.275);
+    height: 100%;
+    width: 80%;
+    overflow: auto;
+    padding: 10px 10px 10px 10px;
 }
 
 
