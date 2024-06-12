@@ -1,11 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react'
 import SearchContact from './SearchContact'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../../service/actions/userActions'
+import { useNavigate } from 'react-router-dom'
 
 function ChatLeftInfo(props) {
   const [dropDown, setDropdown] = useState(false)
   const [searchContact, setSearchContact] = useState(false)
   const dropRef = useRef(null)
   const addBtn = useRef(null)
+  const dispatch = useDispatch()
+  const { isLogged } = useSelector((state) => state.loginAuth)
+  const navigate = useNavigate()
+
 
   const handleDropdown = () => {
     setDropdown(!dropDown)
@@ -29,7 +36,16 @@ function ChatLeftInfo(props) {
     }
   }, [])
 
-  
+  useEffect(() => {
+    if(!isLogged) {
+      navigate('/login')
+      console.log('Logged Out successfully')
+    }
+  }, [isLogged])
+
+  const handleLogOut = () => {
+    dispatch(logout())
+  }
 
   return (
     <div className='info-lt'>
@@ -40,11 +56,16 @@ function ChatLeftInfo(props) {
           <button className='drop-button' onClick={handleDropdown}><h5>&#x22EE;</h5></button>
           {dropDown && (<div className="drop-content">
             <ul style={{listStyle: 'none'}}>
-              <li><button onClick={() => {
+              <li><button 
+                onClick={() => {
                   handleDropdown()
                   handleSearchContact()
                 }} className='add-btn' ref={addBtn}><h5>Add Contact</h5></button></li>
-              <li><button onClick={handleDropdown} className='logout-btn'><h5>Log Out</h5></button></li>
+              <li><button 
+                onClick={() => {
+                  handleDropdown()
+                  handleLogOut()
+                }} className='logout-btn'><h5>Log Out</h5></button></li>
             </ul>
           </div>)}
         </div>

@@ -18,7 +18,7 @@ export const login = (credentials) => async(dispatch) => {
     try {
         const response = await axios.post('http://localhost:8000/api/login', credentials)
         const user = response.data
-        console.log(user.userId)
+        console.log(user)
         dispatch(loginSuccess(user))
     } catch(error) {
         console.log('Error logging in ', error.message)

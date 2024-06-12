@@ -5,6 +5,7 @@ import {
     LOGOUT,
 } from '../constants/constants'
 
+
 const initialState = {
     isLogged: false,
     user: null,

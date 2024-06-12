@@ -24,6 +24,12 @@ function Login() {
         }
     }, [error])
 
+    useEffect(() => {
+        if(isLogged) {
+            navigate('/')
+        }
+    }, [isLogged, navigate])
+
     const handleChange = (event) => {
         setCredentials({...credentials, [event.target.name]: event.target.value})
     }
@@ -31,9 +37,6 @@ function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault()
         dispatch(login(credentials))
-        if (isLogged) {
-            navigate('/')
-        }
     }
 
   return (
