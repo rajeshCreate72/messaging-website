@@ -10,20 +10,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/register' element={<RegisterPage />} ></Route>
-            <Route path='/login' element={<LoginPage />} ></Route>
-            
-              <Route 
-              path='/' 
-              element={
-                <Provider store={store}>
-                  <ChatsMain /> 
-                </Provider>
-                }></Route>
-          </Routes>
-        </BrowserRouter>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/register' element={<RegisterPage />} ></Route>
+              <Route path='/login' element={<LoginPage />} ></Route>
+              <Route path='/' element={ <ChatsMain /> }></Route>
+            </Routes>
+          </BrowserRouter>
+        </Provider>
       </div>
     );
   }

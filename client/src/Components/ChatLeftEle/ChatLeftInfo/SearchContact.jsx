@@ -16,7 +16,7 @@ function SearchContact() {
     // event.preventDefault()
     try {
       const response = await axios.get('http://localhost:8000/api/register')
-      usersData = response.data
+      usersData = response.JSON()
 
       console.log(usersData)
     }
