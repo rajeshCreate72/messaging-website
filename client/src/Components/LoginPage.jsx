@@ -1,42 +1,39 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { login } from './service/actions/userActions'
+import { login } from './service/actions/userLogActions'
 
 
 function Login() {
     const [credentials, setCredentials] = useState({email: '', password: ''})
-    const dispatch = useDispatch()
     const { isLoading, error, isLogged } = useSelector((state) => state.loginAuth)
     const [isError, setError] = useState(false)
+    const dispatch = useDispatch()
     const navigate = useNavigate()
-
-    useEffect(() => {
-        if (error) {
-            setError(true)
-            const errorTime = setTimeout(() => {
-                setError(false)
-            }, 10000);
-            
-            return () => {
-                clearTimeout(errorTime)
-            }
-        }
-    }, [error])
 
     useEffect(() => {
         if(isLogged) {
             navigate('/')
+            localStorage.setItem('loggedIn', true)
         }
     }, [isLogged, navigate])
 
     const handleChange = (event) => {
-        setCredentials({...credentials, [event.target.name]: event.target.value})
+        setCredentials((prevState) => ({
+            ...prevState,
+            [event.target.name]: event.target.value
+        }))
     }
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault()
-        dispatch(login(credentials))
+        dispatch(login(credentials)).catch(err => {
+            setError(true);
+            const timer = setTimeout(() => {
+                setError(false);
+            }, 5000);
+            return () => clearTimeout(timer);
+        });
     }
 
   return (

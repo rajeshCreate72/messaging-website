@@ -1,30 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../ChatLeftEle.css'
-import axios from 'axios';
+import axios from 'axios'
 
 function SearchContact() {
-  const [toSearchUser, setToSearchUser] = useState('');
-  const [users, setUsers] = useState([])
-
-  const handleToSearchUser = (event) => {
-    setToSearchUser(event.target.value)
+  const [searchUser, setSearchUser] = useState('')
+  const [gotUser, setGotUser] = useState(null)
+  
+  const handleSearchUser = (event) => {
+    setSearchUser(event.target.value)
   }
 
-  const usersData = {};
-
-  const usersList = async(event) => {
-    // event.preventDefault()
-    try {
-      const response = await axios.get('http://localhost:8000/api/register')
-      usersData = response.JSON()
-
-      console.log(usersData)
+  useEffect(() => {
+    if(searchUser) {
+      async function fetchUser(user) {
+        try {
+          const response = await axios.get('http://localhost:8000/api/users', {params: {userId: user}})
+          setGotUser(response.data)
+        } catch (error) {
+          console.log('No user: ', error.message)
+          setGotUser(null)
+        }
+      }
+      fetchUser(searchUser)
+    } else {
+      setGotUser(null)
     }
-    catch(error) {
-      console.log("Error retriveing users data", error.message)
-    }
-  }
-  usersList()
+  }, [searchUser])
 
   return (
     <div className='search-contact'>
@@ -32,11 +33,17 @@ function SearchContact() {
             <input 
               type="search"
               placeholder="Enter the user's username..."
-              value={toSearchUser}
-              onChange={handleToSearchUser}
+              value={searchUser}
+              onChange={handleSearchUser}
             />
         </form>
-        <div className='get-contacts'>Getting those contacts...</div>
+        <div className='get-contacts'>
+          {gotUser ? (
+            <div><p>{gotUser.userId}</p></div>
+          ) : (
+           <div><p>No User Found</p></div>
+          )}
+        </div>
     </div>
   )
 }

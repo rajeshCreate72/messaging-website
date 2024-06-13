@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 // Register Form
 router.post('/', async(req, res) => {
-    const {email, userId, name, password} = req.body
+    const {email, userId, password} = req.body
 
     try{
         const checkEmail = await users.findOne({email: email})
@@ -22,7 +22,6 @@ router.post('/', async(req, res) => {
             const data = {
                 email: email,
                 userId: userId,
-                name: name,
                 password: hashPasswd,
             }
             await users.create(data);
@@ -34,6 +33,16 @@ router.post('/', async(req, res) => {
         res.status(500).json('Error registring User: ')
     }
 
+})
+
+router.get('/', async(req, res) => {
+    const userId = req.body;
+    try {
+        const User = await users.find(userId)
+        res.json(User)
+    } catch(error) {
+        res.status(500).json({msg: error.message})
+    }
 })
 
 module.exports = router

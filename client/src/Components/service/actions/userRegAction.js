@@ -12,12 +12,12 @@ export const registerFailed = (error) => ({ type: REGISTER_FAILED, payload: erro
 
 export const registerSuccess = (user) => ({ type: REGISTER_SUCESS, payload: user })
 
-export const register = (credentials) => async(dispatch) => {
-    dispatch(loginRequest())
+export const register = (details) => async(dispatch) => {
+    dispatch(registerRequest())
     try {
-        const response = await axios.post('http://localhost:8000/api/register', credentials)
+        const response = await axios.post('http://localhost:8000/api/register', details)
         const user = response.data
-        console.log(user.userId)
+        console.log(user)
         dispatch(registerSuccess(user))
     } catch(error) {
         console.log('Error Registering ', error.message)

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import SearchContact from './SearchContact'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout } from '../../service/actions/userActions'
+import { logout } from '../../service/actions/userLogActions'
 import { useNavigate } from 'react-router-dom'
 
 function ChatLeftInfo(props) {
@@ -35,9 +35,12 @@ function ChatLeftInfo(props) {
       document.removeEventListener('click', handleCloseEvent)
     }
   }, [])
+  
+  console.log(isLogged)
 
   useEffect(() => {
     if(!isLogged) {
+      console.log(isLogged)
       navigate('/login')
       console.log('Logged Out successfully')
     }

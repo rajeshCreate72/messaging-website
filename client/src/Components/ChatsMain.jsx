@@ -9,21 +9,17 @@ import store from './Store'
 function ChatsMain() {
    const contact = useSelector((state) => state.contacts.contactToChat);
 
-   console.log(contact);
-
  return (
-    <Provider store={store}>
-        <div className='container-fluid font-style'>
-            <div className='row'>
-                <div className='col-3'>
-                    <ChatLeftEle />
-                </div>
-                <div className='col-9'>
-                    { contact && <ChatRightEle /> }
-                </div>
+    <div className='container-fluid font-style'>
+        <div className='row'>
+            <div className='col-3'>
+                <ChatLeftEle />
+            </div>
+            <div className='col-9'>
+                { contact && <ChatRightEle /> }
             </div>
         </div>
-    </Provider>
+    </div>
   )
 }
 

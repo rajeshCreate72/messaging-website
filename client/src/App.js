@@ -1,27 +1,33 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import ChatsMain from './Components/ChatsMain';
 import RegisterPage from './Components/RegisterPage';
 import LoginPage from './Components/LoginPage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './Components/Store';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginSuccess } from './Components/service/actions/userLogActions';
 
-class App extends Component {
-  render() {
+function App ({ isIntiatialLog }) {
+  const { isLogged } = useSelector((state) => state.loginAuth)
+  const dispatch = useDispatch()
+
+  // console.log(isIntiatialLog);
+  // console.log(isLogged)
+
+  useEffect(() => {
+    if(isIntiatialLog) {
+      dispatch(loginSuccess())
+    }
+  }, [dispatch, isIntiatialLog])
+
     return (
       <div>
-        <Provider store={store}>
-          <BrowserRouter>
-            <Routes>
-              <Route path='/register' element={<RegisterPage />} ></Route>
-              <Route path='/login' element={<LoginPage />} ></Route>
-              <Route path='/' element={ <ChatsMain /> }></Route>
-            </Routes>
-          </BrowserRouter>
-        </Provider>
+          <Routes>
+            <Route path='/register' element={<RegisterPage />} ></Route>
+            <Route path='/login' element = {isLogged ? <Navigate to='/' /> : <LoginPage/>}></Route>
+            <Route path='/' element = {isLogged ? <ChatsMain /> : <Navigate to='/login' />}></Route>
+          </Routes>
       </div>
     );
   }
-}
 
 export default App;
