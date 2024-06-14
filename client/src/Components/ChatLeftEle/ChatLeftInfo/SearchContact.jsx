@@ -39,7 +39,7 @@ function SearchContact() {
         </form>
         <div className='get-contacts'>
           {gotUser ? (
-            <div><p>{gotUser.userId}</p></div>
+            <div className='search-user'><p>{gotUser.userId}</p><button className='message-user'>Message</button></div>
           ) : (
            <div><p>No User Found</p></div>
           )}

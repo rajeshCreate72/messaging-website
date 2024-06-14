@@ -12,7 +12,7 @@ const initialState = {
     isSuccess: false,
 }
 
-const userRegistration = (state = { initialState }, action) => {
+const userRegistration = (state = initialState, action) => {
     switch (action.type) {
         case REGISTER_REQUEST:
             return { ...state, isLoading: true }

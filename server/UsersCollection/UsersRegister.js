@@ -36,12 +36,12 @@ router.post('/', async(req, res) => {
 })
 
 router.get('/', async(req, res) => {
-    const userId = req.body;
+    const { userId } = req.query;
     try {
-        const User = await users.find(userId)
+        const User = await users.findOne({ userId })
         res.json(User)
     } catch(error) {
-        res.status(500).json({msg: error.message})
+        res.status(500).json({message: error.message})
     }
 })
 

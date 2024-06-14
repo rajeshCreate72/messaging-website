@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { login } from './service/actions/userLogActions'
+import './ChatsMain.css'
 
 
 function Login() {
@@ -27,14 +28,17 @@ function Login() {
 
     const handleSubmit = async(event) => {
         event.preventDefault()
-        dispatch(login(credentials)).catch(err => {
-            setError(true);
-            const timer = setTimeout(() => {
-                setError(false);
-            }, 5000);
-            return () => clearTimeout(timer);
-        });
+        dispatch(login(credentials))
     }
+
+    useEffect(() => {
+        if(error) {
+            setError(true)
+            setTimeout(() => {
+                setError(false)
+            }, 2000)
+        }
+    }, [error])
 
   return (
     <div className='reg-page'>

@@ -13,7 +13,7 @@ const initialState = {
     error: null,
 }
 
-const userAuthentication = (state = {initialState}, action) => {
+const userAuthentication = (state = initialState, action) => {
     switch(action.type) {
         case LOGIN_REQUEST:
             return { ...state, isLoading: true, isLogged: false, user: null, error: null }

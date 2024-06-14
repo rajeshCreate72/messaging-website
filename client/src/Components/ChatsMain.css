@@ -61,3 +61,15 @@
     text-decoration: none;
     color: wheat;
 }
+
+.error {
+    background-color: rgba(225, 98, 98, 0.395);
+    padding: 10px;
+    color: rgb(230, 207, 207);
+}
+
+.load {
+    background-color: rgba(255, 255, 207, 0.376);
+    padding: 10px;
+    color: rgb(63, 58, 5);
+}
