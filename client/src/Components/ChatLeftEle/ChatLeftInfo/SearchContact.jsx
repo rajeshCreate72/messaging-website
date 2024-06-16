@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import '../ChatLeftEle.css'
 import axios from 'axios'
+import { syncContacts } from '../../service/actions/syncContacts'
+import { useDispatch, useSelector } from 'react-redux'
 
 function SearchContact() {
   const [searchUser, setSearchUser] = useState('')
+  const [addContact, setAddedContact] = useState({user: '', contactId: []})
   const [gotUser, setGotUser] = useState(null)
+  const { user } = useSelector((state) => state.loginAuth)
+  const dispatch = useDispatch()
   
   const handleSearchUser = (event) => {
     setSearchUser(event.target.value)
+  }
+
+  const handleContact = (contactId) => {
+    setAddedContact()
+  }
+
+  const addingContactToDB = () => {
+    handleContact()
+    dispatch(syncContacts(addContact))
   }
 
   useEffect(() => {
@@ -39,7 +53,10 @@ function SearchContact() {
         </form>
         <div className='get-contacts'>
           {gotUser ? (
-            <div className='search-user'><p>{gotUser.userId}</p><button className='message-user'>Message</button></div>
+            <div className='search-user' >
+              <p>{gotUser.userId}</p>
+              <button onClick={addingContactToDB} className='message-user'>Message</button>
+            </div>
           ) : (
            <div><p>No User Found</p></div>
           )}

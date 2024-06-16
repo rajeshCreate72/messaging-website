@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { login } from './service/actions/userLogActions'
+import { login, loginSuccess } from './service/actions/userLogActions'
 import './ChatsMain.css'
 
 
@@ -12,24 +12,29 @@ function Login() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    useEffect(() => {
-        if(isLogged) {
-            navigate('/')
-            localStorage.setItem('loggedIn', true)
-        }
-    }, [isLogged, navigate])
 
     const handleChange = (event) => {
         setCredentials((prevState) => ({
             ...prevState,
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value,
         }))
     }
 
     const handleSubmit = async(event) => {
         event.preventDefault()
-        dispatch(login(credentials))
+        dispatch(login(credentials)).then(() => {
+            window.sessionStorage.setItem("loggedIn", "true")
+            navigate('/')}
+        ).catch((error) => {
+            setError(true)
+        })
     }
+
+    useEffect(() => {
+        if (isLogged) {
+            navigate('/');
+        }
+    }, [isLogged, navigate]);
 
     useEffect(() => {
         if(error) {
@@ -58,7 +63,7 @@ function Login() {
             </div>
         </form>
         <div className='reg-login'>
-            <p>Not Registered?  <span><Link to='/register' className='reg-link'>Register</Link></span></p>
+            <p>Not Registered?  <span><a href='/register' className='reg-link'>Register</a></span></p>
         </div>
         {isError && (<div className='error'>{error}</div>)}
         {isLoading && (<div className='load'>Loading...</div>)}

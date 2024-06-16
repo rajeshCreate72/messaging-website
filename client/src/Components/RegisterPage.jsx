@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './ChatsMain.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { register } from './service/actions/userRegAction'
 import { loginSuccess } from './service/actions/userLogActions'
 
 function RegisterPage() {
-    const [ details, setDetails ] = useState({email:'', userId:'', password:''})
+    const [ details, setDetails ] = useState({email:'', userId:'', password:'', loginState: false})
     const { isSuccess, isLoading, error } = useSelector((state) => state.registerUser)
     const [isError, setError] = useState(false)
     const navigate = useNavigate()
@@ -14,7 +14,7 @@ function RegisterPage() {
 
 
     const handleDetails = (event) => {
-        setDetails({ ...details, [event.target.name]:event.target.value })
+        setDetails({ ...details, [event.target.name]:event.target.value, loginState: isSuccess})
     }
 
     const handleSubmit = (event) => {
@@ -26,12 +26,9 @@ function RegisterPage() {
     // To set error and disapper after 5 secs
     useEffect(() => {
         if(error) {
-            const errorTime = setTimeout(() => {
+            setTimeout(() => {
                 setError(true)
             }, 5000)
-            return () => {
-                clearTimeout(errorTime)
-            }
         }
     }, [error])
 
@@ -40,7 +37,7 @@ function RegisterPage() {
         if(isSuccess) {
             navigate('/')
         }
-    }, [navigate, isSuccess])
+    }, [navigate, isSuccess, dispatch])
 
   return (
     <div className='reg-page'>
@@ -63,7 +60,7 @@ function RegisterPage() {
             </div>
         </form>
         <div className='reg-login'>
-            <p>Already Registered?  <span><Link to='/login' className='reg-link'>Log In</Link></span></p>
+            <p>Already Registered?  <span><a href='/login' className='reg-link'>Log In</a></span></p>
         </div>
         {isError && (<div className='error'>{ error }</div>)}
         {isLoading && (<div className='load'>Loading...</div>)}

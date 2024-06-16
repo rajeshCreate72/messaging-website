@@ -13,7 +13,6 @@ const usersSchema = new mongoose.Schema({
         type:String,
         required: true,
     },
-    
 })
 
 const users = mongoose.model('users', usersSchema)

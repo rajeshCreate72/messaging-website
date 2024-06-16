@@ -6,8 +6,12 @@ import {
 } from '../constants/constants'
 
 
+const isInitialLog = window.sessionStorage.getItem("loggedIn") === "true"
+
+console.log(isInitialLog)
+
 const initialState = {
-    isLogged: false,
+    isLogged: isInitialLog,
     isLoading: false,
     user: null,
     error: null,

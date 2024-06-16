@@ -8,7 +8,6 @@ function ChatLeftInfo(props) {
   const [dropDown, setDropdown] = useState(false)
   const [searchContact, setSearchContact] = useState(false)
   const dropRef = useRef(null)
-  const addBtn = useRef(null)
   const dispatch = useDispatch()
   const { isLogged } = useSelector((state) => state.loginAuth)
   const navigate = useNavigate()
@@ -38,16 +37,11 @@ function ChatLeftInfo(props) {
   
   console.log(isLogged)
 
-  useEffect(() => {
-    if(!isLogged) {
-      console.log(isLogged)
-      navigate('/login')
-      console.log('Logged Out successfully')
-    }
-  }, [isLogged])
-
   const handleLogOut = () => {
     dispatch(logout())
+    window.sessionStorage.removeItem("loggedIn")
+    navigate('/login')
+    console.log('Logged Out successfully')
   }
 
   return (
@@ -63,7 +57,7 @@ function ChatLeftInfo(props) {
                 onClick={() => {
                   handleDropdown()
                   handleSearchContact()
-                }} className='add-btn' ref={addBtn}><h5>Add Contact</h5></button></li>
+                }} className='add-btn'><h5>Add Contact</h5></button></li>
               <li><button 
                 onClick={() => {
                   handleDropdown()

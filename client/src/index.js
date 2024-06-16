@@ -6,12 +6,10 @@ import { Provider } from 'react-redux';
 import store from './Components/Store';
 import { BrowserRouter } from 'react-router-dom';
 
-const isIntiatialLog = localStorage.getItem('loggedIn') === true
-
 createRoot(document.getElementById('root')).render(
     <Provider store={store}>
         <BrowserRouter>
-            <App isIntiatialLog = { isIntiatialLog } />
+            <App />
         </BrowserRouter>
     </Provider>
 );

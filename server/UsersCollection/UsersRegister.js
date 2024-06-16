@@ -38,7 +38,7 @@ router.post('/', async(req, res) => {
 router.get('/', async(req, res) => {
     const { userId } = req.query;
     try {
-        const User = await users.findOne({ userId })
+        const User = await users.findOne({ userId : userId })
         res.json(User)
     } catch(error) {
         res.status(500).json({message: error.message})
