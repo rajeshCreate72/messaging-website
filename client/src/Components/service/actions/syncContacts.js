@@ -6,17 +6,18 @@ import {
 
 export const syncContactsSuccess = (user) => ({ type: SYNC_CONTACTS_SUCCESS, payload: user })
 
-export const syncContactsFailed = (error) => ({ type: SYNC_CONTACTS_FAILED, payload: error })
+export const syncContactsFailed = (error) => ({ type: SYNC_CONTACTS_FAILED, payload: error.message })
 
 export const syncContactsRequest = () => ({ type: SYNC_CONTACTS_REQUEST })
 
-export const syncContacts = () => async(dispatch) => {
+export const syncContacts = (contact) => async(dispatch) => {
     dispatch(syncContactsRequest())
     try {
-        const response = await axios.post('http://localhost:8000/api/contacts', contact)
+        const response = await axios.post("http://localhost:8000/api/contacts", {contact})
         console.log(response.data)
         dispatch(syncContactsSuccess(response.data))
     } catch(error) {
-        dispatch(syncContactsFailed(error))
+        console.log(error.message)
+        dispatch(syncContactsFailed(error.message))
     }
 }

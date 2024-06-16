@@ -6,7 +6,7 @@ const contactsSchema = new mongoose.Schema({
         required: true,
     },
     contacts: {
-        type: Array,
+        type: [],
         required: true,
     }
 })

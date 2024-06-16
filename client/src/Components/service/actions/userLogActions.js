@@ -20,6 +20,7 @@ export const login = (credentials) => async(dispatch) => {
         const user = response.data
         console.log(user)
         dispatch(loginSuccess(user))
+        window.localStorage.setItem('userId', user)
     } catch(error) {
         console.log('Error logging in ', error.message)
         dispatch(loginFailed(error.message))

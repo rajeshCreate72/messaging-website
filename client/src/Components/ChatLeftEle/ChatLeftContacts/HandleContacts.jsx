@@ -1,11 +1,12 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import '../ChatLeftEle.css'
 
 function HandlingContacts(props) {
-    const contacts = ["Contact 1", "Contact 2", "Contact 3"];
-
+    const { contacts, isSuccess } = useSelector((state) => state.addContact)
     const dispatch = useDispatch();
+
+    console.log(contacts)
 
     const selectContact = (contact) => {
         console.log(contact)
@@ -14,12 +15,12 @@ function HandlingContacts(props) {
     
   return (
     <div>
-        {contacts.reverse().map((contact, index) => (
+        {/* {contact.map((contact, index) => (
             <div className='s-cont' key={index} onClick={() => selectContact(contact)}>
                 <h4>{contact}</h4>
                 <p>{ contact }'s message...</p>
             </div>
-        ))}
+        ))} */}
     </div>
   )
 }

@@ -3,10 +3,6 @@ const router = express.Router();
 const users = require('./UsersSchema');
 const bcrypt = require('bcrypt');
 
-const app = express()
-
-app.use(express.json())
-
 // Login Form
 router.post('/', async(req, res) => {
     const {email, password} = req.body

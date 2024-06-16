@@ -3,6 +3,7 @@ const connectDatabase = require('./DatabaseConnection.js')
 const cors = require('cors')
 // Connection to database
 connectDatabase()
+
 // Routes
 const loginConnection = require('./UsersCollection/UsersLogin.js')
 const registerConnection = require('./UsersCollection/UsersRegister.js')
@@ -25,5 +26,5 @@ app.use('/api/users', usersConnection)
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-    console.log(`Server is running ${PORT}`)
+    console.log(`Server is running http://localhost:${PORT} `)
 })
