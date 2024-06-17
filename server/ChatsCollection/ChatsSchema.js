@@ -10,7 +10,7 @@ const chatsSchema = new mongoose.Schema({
         required: true,
     },
     messages: {
-        type: Array,
+        type: [Object],
         required: true,
     }
 });

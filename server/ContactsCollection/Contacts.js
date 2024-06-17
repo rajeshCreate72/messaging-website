@@ -32,4 +32,20 @@ router.post('/', async(req, res) => {
     }
 })
 
+router.get('/', async(req, res) => {
+    const { userId  } = req.query
+
+    try {
+        const checkUser = await contactDb.findOne({userId: userId})
+
+        if(!checkUser) {
+            res.status(404).json('No contacts added')
+        }
+        res.status(200).json(checkUser.contacts)
+    } catch(error) {
+        console.log(error)
+        res.status(500).json(error)
+    }
+})
+
 module.exports = router

@@ -1,5 +1,8 @@
 import axios from "axios"
 import { 
+    FETCH_CONTACTS_FAILED,
+    FETCH_CONTACTS_REQUEST,
+    FETCH_CONTACTS_SUCCESS,
     SYNC_CONTACTS_FAILED,
     SYNC_CONTACTS_REQUEST, 
     SYNC_CONTACTS_SUCCESS } from "../constants/constants"
@@ -21,3 +24,23 @@ export const syncContacts = (contact) => async(dispatch) => {
         dispatch(syncContactsFailed(error.message))
     }
 }
+
+// For Fetching contacts
+
+export const fetchContactsSuccess = (contacts) => ({ type: FETCH_CONTACTS_SUCCESS, payload: contacts })
+
+export const fetchContactsFailed = (error) => ({ type: FETCH_CONTACTS_FAILED, payload: error.message })
+
+export const fetchContactsRequest = () => ({ type: FETCH_CONTACTS_REQUEST })
+
+export const fetchContacts = (ofUser) => async(dispatch) => {
+    dispatch(fetchContactsRequest())
+    try {
+        const response = await axios.get('http://localhost:8000/api/contacts', {params: { userId: ofUser }})
+        const contacts = response.data
+        dispatch(fetchContactsSuccess(contacts))
+    } catch(error) {
+        console.log(error)
+        dispatch(fetchContactsFailed(error))
+    }
+} 

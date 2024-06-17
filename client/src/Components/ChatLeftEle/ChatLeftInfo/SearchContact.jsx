@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../ChatLeftEle.css'
 import axios from 'axios'
-import { syncContacts } from '../../service/actions/syncContacts'
+import { syncContacts } from '../../service/actions/syncFetchContacts'
 import { useDispatch, useSelector } from 'react-redux'
 
 function SearchContact() {
