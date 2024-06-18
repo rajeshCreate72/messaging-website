@@ -8,7 +8,7 @@ import {
 } from '../constants/constants'
 import axios from 'axios'
 
-export const syncingMessagesSuccess = (messages) => ({ type: MESSAGES_SYNC_SUCCESS, payload: messages })
+export const syncingMessagesSuccess = (isSuccessMsg) => ({ type: MESSAGES_SYNC_SUCCESS, payload: isSuccessMsg })
 
 export const syncingMessagesFailed = (error) => ({ type: MESSAGES_SYNC_FAILED, payload: error.message })
 
@@ -19,9 +19,8 @@ export const syncMesssages = (messageSent) => async(dispatch) => {
 
     try {
         const response = await axios.post('http://localhost:8000/api/chats', messageSent)
-        const messages = response.data;
-        console.log(messages)
-        dispatch(syncingMessagesSuccess(messages))
+        const message = response.data;
+        dispatch(syncingMessagesSuccess(message))
     } catch(error) {
         console.log(error)
         dispatch(syncingMessagesFailed(error))

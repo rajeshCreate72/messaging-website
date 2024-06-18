@@ -41,8 +41,10 @@ router.get('/', async(req, res) => {
 
         if(checkUser) {
             res.status(200).json(checkUser.messages)
+            console.log(checkUser.messages)
         } else if(checkContact) {
             res.status(200).json(checkContact.messages)
+            console.log(checkContact.messages)
         }
     } catch(error) {
         console.log(error)

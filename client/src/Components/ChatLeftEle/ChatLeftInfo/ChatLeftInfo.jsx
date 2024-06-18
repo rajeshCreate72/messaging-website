@@ -9,7 +9,6 @@ function ChatLeftInfo(props) {
   const [searchContact, setSearchContact] = useState(false)
   const dropRef = useRef(null)
   const dispatch = useDispatch()
-  const { isLogged } = useSelector((state) => state.loginAuth)
   const navigate = useNavigate()
 
 
@@ -34,8 +33,6 @@ function ChatLeftInfo(props) {
       document.removeEventListener('click', handleCloseEvent)
     }
   }, [])
-  
-  console.log(isLogged)
 
   const handleLogOut = () => {
     dispatch(logout())

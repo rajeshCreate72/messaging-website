@@ -11,14 +11,6 @@ function ChatRightMessage() {
   const userId = localStorage.getItem('userId')
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    const users = {
-      userId: userId,
-      contactId: contact,
-    }
-    dispatch(fetchMessages(users))
-  }, [contact, dispatch])
-
   const date = new Date()
   const day = String(date.getDay()).padStart(2, '0')
   const month = String(date.getMonth() + 1).padStart(2, '0')
@@ -53,7 +45,7 @@ function ChatRightMessage() {
   return (
     <div className='msgs'>
       <div className='text-area'>
-        <HandleMessages />
+        <HandleMessages msg={msgs}/>
       </div>
       <div className="row">
           <div className="col">

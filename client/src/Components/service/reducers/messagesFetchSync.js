@@ -13,6 +13,7 @@ const intitalState = {
     isLoading: false,
     messages: [],
     error: null,
+    isSuccessMsg: null,
 }
 
 
@@ -22,8 +23,11 @@ const addingMessagesReducer = (state = intitalState, action) => {
         case MESSAGES_FETCH_REQUEST:
             return { ...state, isSuccess: false, messages: [], error: null }
         case MESSAGES_SYNC_SUCCESS:
+            return { ...state, isSuccess: true, messages: [], error: null, isLoading: false, 
+                isSuccessMsg: action.payload }
         case MESSAGES_FETCH_SUCCESS:
-            return { ...state, isSuccess: true, message: action.payload, error: null, isLoading: false }
+            return { ...state, isSuccess: true, messages: action.payload, error: null, isLoading: false, 
+                isSuccessMsg: action.payload }
         case MESSAGES_SYNC_FAILED:
         case MESSAGES_FETCH_FAILED:
             return { ...state, isSuccess: false, error: action.payload, isLoading: false, messages: [] }

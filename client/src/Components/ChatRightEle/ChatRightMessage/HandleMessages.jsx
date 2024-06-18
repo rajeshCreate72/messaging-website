@@ -1,23 +1,13 @@
 import React, { useRef, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchMessages } from '../../service/actions/messagesFetchSync';
+// import { fetchMessages } from '../../service/actions/messagesFetchSync';
 
-function HandleMessages() {
+function HandleMessages({ msgs }) {
   const msgRef = useRef(null)
   const userId = localStorage.getItem('userId')
   const { messages } = useSelector((state) => state.addMessages)
-  const contact = useSelector((state) => state.contacts.contactToChat)
-  const dispatch = useDispatch()
 
   console.log(messages)
-
-  useEffect(() => {
-    const users = {
-      userId: userId,
-      contactId: contact,
-    }
-    dispatch(fetchMessages(users))
-  }, [contact, dispatch])
 
   useEffect(() => {
     // msgRef.current refers to the msg sent by user not contact
@@ -28,8 +18,7 @@ function HandleMessages() {
 
   return (
     <div>
-        {Array.isArray(messages) && 
-        messages.length > 0 && 
+        {
         messages.map((m, index) => (
           <div className='msg-got' key={index}>
             {m.user === userId ? (
