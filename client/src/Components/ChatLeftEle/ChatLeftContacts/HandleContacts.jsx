@@ -1,23 +1,32 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../ChatLeftEle.css";
-import { fetchContacts } from "../../service/actions/syncFetchContacts";
+import { getContacts } from "../../service/actions/syncContacts";
+import { getMessages } from "../../service/actions/syncMessages";
 
-function HandlingContacts(props) {
-  const { contacts } = useSelector((state) => state.addContact);
-  const dispatch = useDispatch();
+function HandlingContacts() {
+  const { contacts } = useSelector((state) => state.addContacts);
   const { isLogged } = useSelector((state) => state.loginAuth);
   const userId = window.localStorage.getItem("userId");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isLogged) {
-      dispatch(fetchContacts(userId));
+      dispatch(getContacts(userId));
     }
-  }, [dispatch]);
+  }, [dispatch, isLogged]);
 
   const selectContact = (contact) => {
     dispatch({ type: "SET_CONTACT_TO_CHAT", contact });
   };
+
+  // const retriveContactMessages = (contact) => {
+  //   const data = {
+  //     userId: userId,
+  //     contactId: contact,
+  //   };
+  //   dispatch(getMessages(data));
+  // };
 
   return (
     <div>
@@ -28,6 +37,7 @@ function HandlingContacts(props) {
             key={index}
             onClick={() => {
               selectContact(contact);
+              // retriveContactMessages(contact);
             }}
           >
             <h6>{contact}</h6>

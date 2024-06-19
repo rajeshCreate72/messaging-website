@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "../ChatRightEle.css";
 import { useDispatch, useSelector } from "react-redux";
-import { syncMesssages } from "../../service/actions/messagesFetchSync";
+import { postContact } from "../../service/actions/syncContacts";
+import { postMessages, getMessages } from "../../service/actions/syncMessages";
+import "../ChatRightEle.css";
 
 function ChatRightReply() {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
+  // const [messages, setMessages] = useState({});
   const user = localStorage.getItem("userId");
   const contact = useSelector((state) => state.contacts.contactToChat);
 
@@ -41,21 +42,21 @@ function ChatRightReply() {
   };
 
   const setMsgFormat = (message) => {
-    const newMessage = [{ user: user, msg: message, time: createTime() }];
+    const newMessage = { user: user, msg: message, time: createTime() };
     return newMessage;
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const formattedMessage = setMsgFormat(message);
-    setMessages(formattedMessage);
-    console.log(messages);
+    // setMessages(formattedMessage);
+    // console.log(messages);
     const messageData = {
       userId: user,
       contactId: contact,
-      messages: messages,
+      message: formattedMessage,
     };
-    dispatch(syncMesssages(messageData));
+    dispatch(postMessages(messageData));
     setMessage("");
   };
 

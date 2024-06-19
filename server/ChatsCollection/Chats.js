@@ -1,44 +1,57 @@
 const express = require("express");
 const chatsDb = require("./ChatsSchema");
+const contactsDb = require("../ContactsCollection/ContactsSchema");
 const router = express.Router();
 
-router.post("/", async (req, res) => {
-  const { userId, contactId, messages } = req.body;
-
+async function addContactToContact(userId, contactId, res) {
   try {
-    let chatDocument;
-    const checkUser = await chatsDb.findOne({
+    const addContactTo = await contactsDb.findOne({ userId: contactId });
+    if (addContactTo) {
+      if (addContactTo.contacts.indexOf(userId) !== -1) {
+        return "contact already exisit";
+      } else {
+        addContactTo.contacts.push(userId);
+        await addContactTo.save();
+        return "Contact added to DB";
+      }
+    } else {
+      const newUser = new contactsDb({
+        userId: contactId,
+        contacts: [userId],
+      });
+      await newUser.save();
+      return "New Contact added to DB";
+    }
+  } catch (error) {
+    console.log(error);
+    throw new Error("Network error");
+  }
+}
+
+router.post("/", async (req, res) => {
+  const { userId, contactId, message } = req.body;
+  try {
+    const chat = await chatsDb.findOne({
       $or: [
         { user1: userId, user2: contactId },
         { user1: contactId, user2: userId },
       ],
     });
-
-    if (checkUser) {
-      chatDocument = checkUser;
+    console.log(chat);
+    if (chat) {
+      chat.messages.push(message);
+      await chat.save();
+      addContactToContact(userId, contactId, res);
+      res.status(200).json("Messages push success");
     } else {
-      let newMessage;
-      if (messages.length > 0) {
-        chatDocument = new chatsDb({
-          user1: userId,
-          user2: contactId,
-          messages: [],
-        });
-        newMessage = {
-          user: messages[0].user,
-          msg: messages[0].msg,
-          time: messages[0].time,
-        };
-      } else {
-        chatDocument = new chatsDb({
-          user1: userId,
-          user2: contactId,
-          messages: [],
-        });
-      }
-      chatDocument.messages.push(newMessage);
-      await chatDocument.save();
-      res.status(200).json("successfully submitted");
+      const newChat = new chatsDb({
+        user1: userId,
+        user2: contactId,
+        messages: [message],
+      });
+      await newChat.save();
+      addContactToContact(userId, contactId, res);
+      res.status(200).json("New Chat created");
     }
   } catch (error) {
     console.log(error);
@@ -47,8 +60,8 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  const { userId, contactId } = req.query;
   console.log(req.query);
+  const { userId, contactId } = req.query;
 
   try {
     const checkUser = await chatsDb.findOne({

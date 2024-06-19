@@ -3,7 +3,7 @@ const contactDb = require("./ContactsSchema");
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-  const { userId, contact } = req.body.contact;
+  const { userId, contact } = req.body;
 
   try {
     let checkUser = await contactDb.findOne({ userId: userId });
@@ -14,15 +14,15 @@ router.post("/", async (req, res) => {
       } else {
         checkUser.contacts.push(contact);
         await checkUser.save();
-        res.status(200).json(checkUser.contacts);
+        res.status(200).json("Contact added to DB");
       }
     } else {
       const newUser = new contactDb({
         userId: userId,
         contacts: [contact],
       });
-      const createdContact = await newUser.save();
-      res.status(200).json(newUser.contacts);
+      await newUser.save();
+      res.status(200).json("New Contact added to DB");
     }
   } catch (error) {
     console.log(error);
@@ -31,7 +31,6 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  console.log(req.query);
   const { userId } = req.query;
 
   try {

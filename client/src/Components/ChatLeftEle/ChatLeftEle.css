@@ -1,120 +1,119 @@
 .info-lt {
-    height: 10vh;
-    background-color: rgba(124, 165, 192, 0.433);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  height: 10vh;
+  background-color: rgba(124, 165, 192, 0.433);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .cont-list {
-    list-style: none;
-    height: 89vh;
-    background-color: rgba(101, 135, 157, 0.241);
+  list-style: none;
+  height: 89vh;
+  background-color: rgba(101, 135, 157, 0.241);
 }
 
 .s-cont {
-    margin-top: 2px;
-    border-bottom: 2px solid rgba(196, 207, 213, 0.366);
-    cursor: pointer;
+  margin-top: 5px;
+  padding-top: 5px;
+  border-bottom: 2px solid rgba(196, 207, 213, 0.366);
+  cursor: pointer;
 }
 
 .my-img-div {
-    width: 70px;
-    height: 70px;
-    max-width: 70px;
-    max-width: 70px;
-    border-radius: 40px;
-    background-color: white;
-    opacity: 30%;
-    margin-left: 10px;
+  width: 70px;
+  height: 70px;
+  max-width: 70px;
+  max-width: 70px;
+  border-radius: 40px;
+  background-color: white;
+  opacity: 30%;
+  margin-left: 10px;
 }
 
 .drop-button {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(113, 223, 109, 0.323);
-    background-size: cover;
-    background-repeat: no-repeat;
-    border: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(113, 223, 109, 0.323);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 10px;
 }
 
 .drop-content {
-    display: block;
-    position: absolute;
-    z-index: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: block;
+  position: absolute;
+  z-index: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .drop-content button {
-    background-color: rgba(86, 153, 161, 0.601);
-    border: none;
-    outline: none;
-    margin-top: 10px;
-    left: 0;
+  background-color: rgba(86, 153, 161, 0.601);
+  border: none;
+  outline: none;
+  margin-top: 10px;
+  left: 0;
 }
 
 .logout-btn {
-    color: rgb(132, 61, 33);
-    align-self: center;
-    text-align: center;
+  color: rgb(132, 61, 33);
+  align-self: center;
+  text-align: center;
 }
 
 .add-btn {
-    align-self: center;
-    text-align: center;
+  align-self: center;
+  text-align: center;
 }
 
 .add-contact-search {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  overflow: hidden;
 }
 
 .search-contact {
-    display:flex;
-    background-color: rgba(43, 76, 80, 0.275);
-    height: 50vh;
-    width: 50vh;
-    align-items: center;
-    flex-direction: column;
-    overflow: hidden;
+  display: flex;
+  background-color: rgba(43, 76, 80, 0.275);
+  height: 50vh;
+  width: 50vh;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .search-box-info {
-    margin-left: 2vw;
-    height: 4vh;
-    border: none;
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.3);
+  margin-left: 2vw;
+  height: 4vh;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .get-contacts {
-    background-color: rgba(43, 76, 80, 0.275);
-    height: 100%;
-    width: 80%;
-    overflow: auto;
-    padding: 10px 10px 10px 10px;
+  background-color: rgba(43, 76, 80, 0.275);
+  height: 100%;
+  width: 80%;
+  overflow: auto;
+  padding: 10px 10px 10px 10px;
 }
 
 .search-user {
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    border: 2px solid rgba(208, 194, 155, 0.377);
-    padding: 5px 5px 5px 5px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  border: 2px solid rgba(208, 194, 155, 0.377);
+  padding: 5px 5px 5px 5px;
 }
-
-

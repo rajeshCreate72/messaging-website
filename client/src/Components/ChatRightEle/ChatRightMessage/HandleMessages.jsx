@@ -1,18 +1,18 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { fetchMessages } from "../../service/actions/messagesFetchSync";
 
-function HandleMessages() {
+function HandleMessages({ messages }) {
   const msgRef = useRef();
-  const { messagesGot } = useSelector((state) => state.addMessages);
-  const [messages, setMessages] = useState([]);
+  const userId = localStorage.getItem("userId");
+  // const { messages } = useSelector((state) => state.addMessages);
+  // const [messagesGot, setMessagesGot] = useState([]);
 
-  useEffect(() => {
-    if (messagesGot) {
-      setMessages(messagesGot);
-    }
-  }, [messages]);
+  // useEffect(() => {
+  //   setMessagesGot([]);
+  //   if (messages) {
+  //     setMessagesGot(messages);
+  //   }
+  // }, [messages]);
 
   useEffect(() => {
     msgRef.current?.scrollIntoView({ behaviour: "smooth" });
