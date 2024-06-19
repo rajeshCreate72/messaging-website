@@ -1,57 +1,75 @@
-const express = require('express')
-const chatsDb = require('./ChatsSchema')
-const router = express.Router()
+const express = require("express");
+const chatsDb = require("./ChatsSchema");
+const router = express.Router();
 
-router.post('/', async(req, res) => {
-    const { userId, contactId, messages} = req.body
+router.post("/", async (req, res) => {
+  const { userId, contactId, messages } = req.body;
 
-    try {
-        const checkUser = await chatsDb.findOne({ user1: userId, user2: contactId })
-        const checkContact = await chatsDb.findOne({ user1: contactId, user2: userId })
+  try {
+    let chatDocument;
+    const checkUser = await chatsDb.findOne({
+      $or: [
+        { user1: userId, user2: contactId },
+        { user1: contactId, user2: userId },
+      ],
+    });
 
-        if(checkUser) {
-            checkUser.messages.push(...messages)
-            await checkUser.save()
-            res.status(200).json('successfuly submitted')
-        } else if(checkContact) {
-            checkContact.messages.push(...messages)
-            await checkContact.save()
-            res.status(200).json('successfully submitted')
-        } else {
-            const createChat = new chatsDb({
-                user1: userId,
-                user2: contactId,
-                messages: messages
-            })
-            await createChat.save()
-            res.status(200).json('successfully submitted')
-        }
-    } catch(error) {
-        console.log(error)
-        res.status(500).json('Failed to save the message')
+    if (checkUser) {
+      chatDocument = checkUser;
+    } else {
+      let newMessage;
+      if (messages.length > 0) {
+        chatDocument = new chatsDb({
+          user1: userId,
+          user2: contactId,
+          messages: [],
+        });
+        newMessage = {
+          user: messages[0].user,
+          msg: messages[0].msg,
+          time: messages[0].time,
+        };
+      } else {
+        chatDocument = new chatsDb({
+          user1: userId,
+          user2: contactId,
+          messages: [],
+        });
+      }
+      chatDocument.messages.push(newMessage);
+      await chatDocument.save();
+      res.status(200).json("successfully submitted");
     }
-})
+  } catch (error) {
+    console.log(error);
+    res.status(500).json("Failed to save the message");
+  }
+});
 
-router.get('/', async(req, res) => {
-    const { userId, contactId } = req.query
+router.get("/", async (req, res) => {
+  const { userId, contactId } = req.query;
+  console.log(req.query);
 
-    try {
-        const checkUser = await chatsDb.findOne({ user1: userId, user2: contactId })
-        const checkContact = await chatsDb.findOne({ user1: contactId, user2: userId })
-
-        if(checkUser) {
-            res.status(200).json(checkUser.messages)
-            console.log(checkUser.messages)
-        } else if(checkContact) {
-            res.status(200).json(checkContact.messages)
-            console.log(checkContact.messages)
-        }
-    } catch(error) {
-        console.log(error)
-        res.status(404).json('No Messages')
-        res.status(500).json('Network Error')
+  try {
+    const checkUser = await chatsDb.findOne({
+      $or: [
+        { user1: userId, user2: contactId },
+        { user1: contactId, user2: userId },
+      ],
+    });
+    if (checkUser) {
+      const messages = checkUser.messages;
+      console.log("Messages found:", messages);
+      res.status(200).json(messages);
+    } else {
+      console.log("Chat not found for users:", userId, "and", contactId);
+      res.status(404).json("No user found");
     }
-})
+  } catch (error) {
+    console.log(error);
+    res.status(404).json("No Messages");
+    res.status(500).json("Network Error");
+  }
+});
 
-
-module.exports = router
+module.exports = router;
