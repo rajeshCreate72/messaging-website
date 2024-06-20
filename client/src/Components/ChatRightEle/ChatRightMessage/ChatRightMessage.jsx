@@ -11,21 +11,23 @@ function ChatRightMessage() {
   const { messages } = useSelector((state) => state.addMessages);
   const user = localStorage.getItem("userId");
   const dispatch = useDispatch();
-  const allMessages = [...messages, ...messagesToChat];
 
   useEffect(() => {
     dispatch(getMessages({ userId: user, contactId: contact }));
-  }, [contact, dispatch]);
+  }, [contact, dispatch, user]);
+
+  useEffect(() => {
+    setMessagesToChat((prevMessages) => [...prevMessages, ...messages]);
+  }, [messages]);
 
   const addMessage = (message) => {
     setMessagesToChat((prevMessages) => [...prevMessages, message]);
   };
 
-  // console.log(allMessages);
   return (
     <div className="msgs">
       <div className="text-area">
-        <HandleMessages messages={allMessages} />
+        <HandleMessages theseMessages={messagesToChat} />
       </div>
       <div className="row">
         <div className="col">

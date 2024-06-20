@@ -1,18 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-function HandleMessages({ messages }) {
+function HandleMessages({ theseMessages }) {
   const msgRef = useRef();
-  const [theseMessages, setTheseMessages] = useState([]);
   const userId = localStorage.getItem("userId");
-  console.log(messages);
 
   useEffect(() => {
     msgRef.current?.scrollIntoView({ behaviour: "smooth" });
-  }, [messages]);
-
-  useEffect(() => {
-    setTheseMessages(messages);
   }, [theseMessages]);
 
   return (
