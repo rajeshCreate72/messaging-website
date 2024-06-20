@@ -3,27 +3,24 @@ import { useDispatch, useSelector } from "react-redux";
 
 function HandleMessages({ messages }) {
   const msgRef = useRef();
+  const [theseMessages, setTheseMessages] = useState([]);
   const userId = localStorage.getItem("userId");
-  // const { messages } = useSelector((state) => state.addMessages);
-  // const [messagesGot, setMessagesGot] = useState([]);
-
-  // useEffect(() => {
-  //   setMessagesGot([]);
-  //   if (messages) {
-  //     setMessagesGot(messages);
-  //   }
-  // }, [messages]);
+  console.log(messages);
 
   useEffect(() => {
     msgRef.current?.scrollIntoView({ behaviour: "smooth" });
   }, [messages]);
 
+  useEffect(() => {
+    setTheseMessages(messages);
+  }, [theseMessages]);
+
   return (
     <div>
-      {Array.isArray(messages) &&
-        messages.map((m, index) => (
+      {Array.isArray(theseMessages) &&
+        theseMessages.map((m, index) => (
           <div className="msg-got" key={index}>
-            {m.user === userId ? (
+            {m.user !== undefined && m.user === userId ? (
               <div className="row" ref={msgRef}>
                 <div className="col-9"></div>
                 <div className="col my-msg">

@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
         { user1: contactId, user2: userId },
       ],
     });
-    console.log(chat);
+    // console.log(chat);
     if (chat) {
       chat.messages.push(message);
       await chat.save();

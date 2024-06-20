@@ -50,7 +50,7 @@ export const getFailed = (error) => ({
 
 export const getMessages = (ofContact) => async (dispatch) => {
   dispatch(getRequest());
-  console.log(ofContact);
+  // console.log(ofContact);
   try {
     const response = await axios.get("http://localhost:8000/api/chats", {
       params: { userId: ofContact.userId, contactId: ofContact.contactId },

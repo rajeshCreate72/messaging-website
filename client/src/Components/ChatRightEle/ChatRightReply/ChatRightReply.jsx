@@ -4,7 +4,7 @@ import { postContact } from "../../service/actions/syncContacts";
 import { postMessages, getMessages } from "../../service/actions/syncMessages";
 import "../ChatRightEle.css";
 
-function ChatRightReply() {
+function ChatRightReply({ addMessageToChat }) {
   const [message, setMessage] = useState("");
   // const [messages, setMessages] = useState({});
   const user = localStorage.getItem("userId");
@@ -35,15 +35,17 @@ function ChatRightReply() {
     setMessage(event.target.value);
   };
 
-  const keyHandle = (event) => {
-    if (event.key === "Enter" && !event.shiftKey) {
-      handleSubmit(event);
-    }
-  };
-
   const setMsgFormat = (message) => {
     const newMessage = { user: user, msg: message, time: createTime() };
     return newMessage;
+  };
+
+  const keyHandle = (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      handleSubmit(event);
+      const messageNow = setMsgFormat(message);
+      addMessageToChat(messageNow);
+    }
   };
 
   const handleSubmit = (event) => {
