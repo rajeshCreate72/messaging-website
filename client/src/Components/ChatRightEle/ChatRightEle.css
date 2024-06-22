@@ -1,75 +1,88 @@
 .info-rt {
-    background-color: rgba(124, 165, 192, 0.433);
-    height: 10vh;
+  background-color: rgba(124, 165, 192, 0.433);
+  height: 10vh;
 }
 
 .msgs {
-    height: 85vh;
-    display: flex;
-    justify-content: end;
-    flex-direction: column;
+  height: 85vh;
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
 }
 
 .rly {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .rly-box {
-    width: 60vw;
-    height: 90%;
-    resize: none;
-    border: none;
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.3);
+  width: 60vw;
+  height: 90%;
+  resize: none;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .send-btn .msg-submit {
-    height: 50px;
-    width: 50px;
-    background-image: url(../assets/sndImg.png);
-    filter: brightness(100%) contrast(80%);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background-color: transparent;
+  height: 50px;
+  width: 50px;
+  background-image: url(../assets/sndImg.png);
+  filter: brightness(100%) contrast(80%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .my-msg {
-    height: 5%;
-    padding-top: 20px;
-    font-size: large;
-    border-radius: 20px;
-    background-color: rgba(200, 255, 255, 0.3);
+  height: 5%;
+  padding-top: 20px;
+  font-size: large;
+  border-radius: 20px;
+  background-color: rgba(200, 255, 255, 0.3);
+  max-width: 40%;
+  word-wrap: break-word;
 }
 
 .not-my-msg {
-    height: 5%;
-    padding-top: 20px;
-    font-size: large;
-    border-radius: 20px;
-    background-color: rgba(200, 220, 255, 0.2);
+  height: 5%;
+  padding-top: 20px;
+  font-size: large;
+  border-radius: 20px;
+  background-color: rgba(200, 220, 255, 0.2);
 }
 
 .msg-got {
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 8px;
+}
+
+.user-msg {
+  display: block;
+  align-self: flex-end;
+  margin-right: 10px;
+}
+
+.cont-msg {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 10px;
 }
 
 .text-area {
-    overflow-y: auto;
-    overflow-x: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background:rgba(29, 96, 232, 0.535);
-    border-radius: 5px;
+  background: rgba(29, 96, 232, 0.535);
+  border-radius: 5px;
 }

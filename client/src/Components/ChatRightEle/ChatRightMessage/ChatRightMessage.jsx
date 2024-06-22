@@ -8,21 +8,20 @@ import { useDispatch, useSelector } from "react-redux";
 function ChatRightMessage() {
   const contact = useSelector((state) => state.contacts.contactToChat);
   const [messagesToChat, setMessagesToChat] = useState([]);
+  const [addMessage, setAddMessage] = useState({});
   const { messages } = useSelector((state) => state.addMessages);
   const user = localStorage.getItem("userId");
   const dispatch = useDispatch();
 
+  const allMessages = [...messages, addMessage];
+
+  useEffect(() => {
+    setMessagesToChat(allMessages);
+  }, [messages, addMessage]);
+
   useEffect(() => {
     dispatch(getMessages({ userId: user, contactId: contact }));
-  }, [contact, dispatch, user]);
-
-  useEffect(() => {
-    setMessagesToChat((prevMessages) => [...prevMessages, ...messages]);
-  }, [messages]);
-
-  const addMessage = (message) => {
-    setMessagesToChat((prevMessages) => [...prevMessages, message]);
-  };
+  }, [contact, addMessage]);
 
   return (
     <div className="msgs">
@@ -31,7 +30,7 @@ function ChatRightMessage() {
       </div>
       <div className="row">
         <div className="col">
-          <ChatRightReply addMessageToChat={addMessage} />
+          <ChatRightReply addMessageToChat={setAddMessage} />
         </div>
       </div>
     </div>

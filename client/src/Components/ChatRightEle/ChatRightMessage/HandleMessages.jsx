@@ -15,15 +15,14 @@ function HandleMessages({ theseMessages }) {
         theseMessages.map((m, index) => (
           <div className="msg-got" key={index}>
             {m.user !== undefined && m.user === userId ? (
-              <div className="row" ref={msgRef}>
-                <div className="col-9"></div>
+              <div className="row user-msg" ref={msgRef}>
                 <div className="col my-msg">
                   <p>{m.msg}</p>
                   <p>{m.time}</p>
                 </div>
               </div>
             ) : (
-              <div className="row">
+              <div className="row cont-msg">
                 <div className="col-3 not-my-msg">
                   <p>{m.msg}</p>
                   <p>{m.time}</p>
