@@ -18,6 +18,7 @@ const usersConnection = require("./UsersCollection/UsersRegister.js");
 const app = express();
 
 app.use(express.json());
+app.options("*", cors()); // Pre-flight requests for all routes
 app.use(
   cors({
     origin: ["https://chat-website-virid.vercel.app"],
