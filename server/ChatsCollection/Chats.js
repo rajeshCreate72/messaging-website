@@ -37,7 +37,6 @@ router.post("/", async (req, res) => {
         { user1: contactId, user2: userId },
       ],
     });
-    // console.log(chat);
     if (chat) {
       chat.messages.push(message);
       await chat.save();
@@ -60,7 +59,6 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  console.log(req.query);
   const { userId, contactId } = req.query;
 
   try {
@@ -72,7 +70,7 @@ router.get("/", async (req, res) => {
     });
     if (checkUser) {
       const messages = checkUser.messages;
-      console.log("Messages found:", messages);
+      // console.log("Messages found:", messages);
       res.status(200).json(messages);
     } else {
       console.log("Chat not found for users:", userId, "and", contactId);

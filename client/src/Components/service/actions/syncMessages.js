@@ -52,9 +52,15 @@ export const getMessages = (ofContact) => async (dispatch) => {
   dispatch(getRequest());
   // console.log(ofContact);
   try {
-    const response = await axios.get("http://localhost:8000/api/chats", {
-      params: { userId: ofContact.userId, contactId: ofContact.contactId },
-    });
+    const response = await axios.get(
+      "http://localhost:8000/api/chats",
+      {
+        params: { userId: ofContact.userId, contactId: ofContact.contactId },
+      },
+      {
+        withCredentials: true,
+      }
+    );
     const messages = response.data;
     dispatch(getSuccess(messages));
   } catch (error) {

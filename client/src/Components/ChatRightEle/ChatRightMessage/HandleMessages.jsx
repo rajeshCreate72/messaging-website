@@ -16,14 +16,15 @@ function HandleMessages({ theseMessages }) {
           <div className="msg-got" key={index}>
             {m.user !== undefined && m.user === userId ? (
               <div className="row user-msg" ref={msgRef}>
-                <div className="col my-msg">
+                <div className="col-7"></div>
+                <div className="col-5 my-msg">
                   <p>{m.msg}</p>
                   <p>{m.time}</p>
                 </div>
               </div>
             ) : (
               <div className="row cont-msg">
-                <div className="col-3 not-my-msg">
+                <div className="col-5 not-my-msg">
                   <p>{m.msg}</p>
                   <p>{m.time}</p>
                 </div>

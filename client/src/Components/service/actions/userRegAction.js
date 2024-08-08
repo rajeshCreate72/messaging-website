@@ -22,7 +22,10 @@ export const register = (details) => async (dispatch) => {
   try {
     const response = await axios.post(
       "http://localhost:8000/api/register",
-      details
+      details,
+      {
+        withCredentials: true,
+      }
     );
     const user = response.data;
     console.log(user);

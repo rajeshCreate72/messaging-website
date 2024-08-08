@@ -2,5 +2,5 @@
 /node_modules
 
 
-#.gitignore
-DatabaseConnection.js
+#Git-ignore
+.env

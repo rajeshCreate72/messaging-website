@@ -25,7 +25,10 @@ export const postContact = (contact) => async (dispatch) => {
   try {
     const response = await axios.post(
       "http://localhost:8000/api/contacts",
-      contact
+      contact,
+      {
+        withCredentials: true,
+      }
     );
     const okay = response.data;
     dispatch(postSuccess(okay));
