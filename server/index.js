@@ -21,7 +21,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://chat-website-virid.vercel.app",
+    origin: ["https://chat-website-virid.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-type", "Authorization"],
     credentials: true,
@@ -29,6 +29,16 @@ app.use(
 );
 
 app.options("*", cors()); // Pre-flight requests for all routes
+
+app.get("/", (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+      <html>
+        <title>Server</title>
+        <h1>Hello messaging webisite</h1>
+      </html>
+    `);
+});
 
 // app.use(cors());
 // Connection to routes
