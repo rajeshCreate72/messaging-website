@@ -20,7 +20,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: [""],
+    origin: ["https://chat-website-virid.vercel.app"],
     methods: ["POST", "GET"],
     allowedHeaders: ["Content-type", "Authorization"],
     credentials: true,

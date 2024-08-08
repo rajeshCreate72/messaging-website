@@ -16,7 +16,7 @@ export const login = (credentials) => async (dispatch) => {
   dispatch(loginRequest());
   try {
     const response = await axios.post(
-      "http://localhost:8000/api/login",
+      "https://chat-website-server.vercel.app/api/login",
       credentials,
       {
         withCredentials: true,

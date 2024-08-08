@@ -24,7 +24,7 @@ export const postContact = (contact) => async (dispatch) => {
   dispatch(postRequest());
   try {
     const response = await axios.post(
-      "http://localhost:8000/api/contacts",
+      "https://chat-website-server.vercel.app/api/contacts",
       contact,
       {
         withCredentials: true,

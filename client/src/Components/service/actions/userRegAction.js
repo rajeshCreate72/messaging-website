@@ -21,7 +21,7 @@ export const register = (details) => async (dispatch) => {
   dispatch(registerRequest());
   try {
     const response = await axios.post(
-      "http://localhost:8000/api/register",
+      "https://chat-website-server.vercel.app/api/register",
       details,
       {
         withCredentials: true,

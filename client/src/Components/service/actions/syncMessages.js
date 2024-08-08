@@ -53,7 +53,7 @@ export const getMessages = (ofContact) => async (dispatch) => {
   // console.log(ofContact);
   try {
     const response = await axios.get(
-      "http://localhost:8000/api/chats",
+      "https://chat-website-server.vercel.app/api/chats",
       {
         params: { userId: ofContact.userId, contactId: ofContact.contactId },
       },
