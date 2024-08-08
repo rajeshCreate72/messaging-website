@@ -27,9 +27,12 @@ function SearchContact() {
     if (searchUser) {
       async function fetchUser(user) {
         try {
-          const response = await axios.get("http://localhost:8000/api/users", {
-            params: { userId: user },
-          });
+          const response = await axios.get(
+            "https://chat-website-server.vercel.app/api/users",
+            {
+              params: { userId: user },
+            }
+          );
           setGotUser(response.data);
         } catch (error) {
           console.log("No user: ", error.message);
