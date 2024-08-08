@@ -8,15 +8,7 @@ dotenv.config();
 // Connection to database
 connectDatabase();
 
-// Routes
-const loginConnection = require("./UsersCollection/UsersLogin.js");
-const registerConnection = require("./UsersCollection/UsersRegister.js");
-const contactsConnection = require("./ContactsCollection/Contacts.js");
-const chatsConnection = require("./ChatsCollection/Chats.js");
-const usersConnection = require("./UsersCollection/UsersRegister.js");
-
 const app = express();
-
 app.use(express.json());
 
 app.use(
@@ -40,13 +32,12 @@ app.get("/", (req, res) => {
     `);
 });
 
-// app.use(cors());
 // Connection to routes
-app.use("/api/login", loginConnection);
-app.use("/api/register", registerConnection);
-app.use("/api/contacts", contactsConnection);
-app.use("/api/chats", chatsConnection);
-app.use("/api/users", usersConnection);
+app.use("/api/login", require("./UsersCollection/UsersLogin.js"));
+app.use("/api/register", require("./UsersCollection/UsersRegister.js"));
+app.use("/api/contacts", require("./ContactsCollection/Contacts.js"));
+app.use("/api/chats", require("./ChatsCollection/Chats.js"));
+app.use("/api/users", require("./UsersCollection/UsersRegister.js"));
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
