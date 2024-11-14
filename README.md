@@ -1,4 +1,4 @@
-./frontEnd folder contains React code
+./client folder contains React code
 
 
 React version: ```v21.6.1```<br />Dependencies: none
