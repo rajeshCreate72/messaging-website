@@ -113,9 +113,10 @@ npm install
 
 # Run the server
 npm start
+```
 
 ## 🌐 Live Demo
 
 A live version of the application is available at:
 
-[Your Live Demo Link Here](https://your-live-demo-link.com)
+(https://chat-website-virid.vercel.app/login)
